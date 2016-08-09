@@ -10,8 +10,8 @@ namespace Vend
     {  
         private readonly ICoinService _coinService;
         private readonly IProductProvider _productProvider;
-        private Product _currentProduct=null;
-        private ILog _log;
+        private Product _currentProduct;
+        private readonly ILog _log;
 
         /// <summary>
         /// create a new instance of the vending machine
@@ -35,7 +35,7 @@ namespace Vend
         /// <summary>
         /// the currently selected product
         /// </summary>
-        public Product CurrentProduct { get { return _currentProduct; } }
+        public Product CurrentProduct => _currentProduct;
 
         /// <summary>
         /// the money available  (to either make or purchase or get back as change) in the machine
@@ -57,7 +57,8 @@ namespace Vend
             //choose the product based on what was selected
             _currentProduct = _productProvider.GetProducts()
                 .FirstOrDefault(p=>p.ProductType==productType);
-
+            if (_currentProduct == null)
+                return new SelectProductResult {State = ProductSelectedPossibleStates.Fault};
             //if there is enough money in the machine we can dispense the product and return the change
             if (CurrentMoneyAvailable >= _currentProduct.Cost)
             {
@@ -115,7 +116,7 @@ namespace Vend
         /// insert an object into the coin slot - it may not be a valid coin but it does have a size and a weight
         /// </summary>
         /// <param name="size">The size of the object being inserted</param>
-        /// <param name="weight">The weight of the object being inserted<</param>
+        /// <param name="weight">The weight of the object being inserted</param>
         /// <returns></returns>
         public InsertCoinResult InsertCoinObject(double size, double weight)
         {

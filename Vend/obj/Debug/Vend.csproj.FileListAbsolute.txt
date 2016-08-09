@@ -18,3 +18,13 @@ C:\code\Vendor\Vend\bin\Debug\log4net.xml
 C:\code\Vendor\Vend\obj\Debug\Vend.csprojResolveAssemblyReference.cache
 C:\code\Vendor\Vend\obj\Debug\Vend.dll
 C:\code\Vendor\Vend\obj\Debug\Vend.pdb
+C:\code\vendor\Vendor\Vend\bin\Debug\Vend.dll.config
+C:\code\vendor\Vendor\Vend\bin\Debug\Vend.dll
+C:\code\vendor\Vendor\Vend\bin\Debug\Vend.pdb
+C:\code\vendor\Vendor\Vend\bin\Debug\Autofac.dll
+C:\code\vendor\Vendor\Vend\bin\Debug\log4net.dll
+C:\code\vendor\Vendor\Vend\bin\Debug\Autofac.xml
+C:\code\vendor\Vendor\Vend\bin\Debug\log4net.xml
+C:\code\vendor\Vendor\Vend\obj\Debug\Vend.csprojResolveAssemblyReference.cache
+C:\code\vendor\Vendor\Vend\obj\Debug\Vend.dll
+C:\code\vendor\Vendor\Vend\obj\Debug\Vend.pdb
