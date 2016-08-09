@@ -11,3 +11,16 @@ C:\code\Tester\Vend\Vend.Tests\bin\Debug\nunit.framework.xml
 C:\code\Tester\Vend\Vend.Tests\obj\Debug\Vend.Tests.csprojResolveAssemblyReference.cache
 C:\code\Tester\Vend\Vend.Tests\obj\Debug\Vend.Tests.dll
 C:\code\Tester\Vend\Vend.Tests\obj\Debug\Vend.Tests.pdb
+C:\code\Vendor\Vend.Tests\bin\Debug\Vend.Tests.dll
+C:\code\Vendor\Vend.Tests\bin\Debug\Vend.Tests.pdb
+C:\code\Vendor\Vend.Tests\bin\Debug\log4net.dll
+C:\code\Vendor\Vend.Tests\bin\Debug\NSubstitute.dll
+C:\code\Vendor\Vend.Tests\bin\Debug\nunit.framework.dll
+C:\code\Vendor\Vend.Tests\bin\Debug\Vend.dll
+C:\code\Vendor\Vend.Tests\bin\Debug\Vend.pdb
+C:\code\Vendor\Vend.Tests\bin\Debug\log4net.xml
+C:\code\Vendor\Vend.Tests\bin\Debug\NSubstitute.xml
+C:\code\Vendor\Vend.Tests\bin\Debug\nunit.framework.xml
+C:\code\Vendor\Vend.Tests\obj\Debug\Vend.Tests.csprojResolveAssemblyReference.cache
+C:\code\Vendor\Vend.Tests\obj\Debug\Vend.Tests.dll
+C:\code\Vendor\Vend.Tests\obj\Debug\Vend.Tests.pdb

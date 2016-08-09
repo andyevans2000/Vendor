@@ -40,11 +40,13 @@
             this.oneDollarButton = new System.Windows.Forms.Button();
             this.infoLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // colaButton
             // 
             this.colaButton.BackColor = System.Drawing.SystemColors.Control;
+            this.colaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colaButton.Location = new System.Drawing.Point(47, 31);
             this.colaButton.Name = "colaButton";
             this.colaButton.Size = new System.Drawing.Size(119, 60);
@@ -55,6 +57,7 @@
             // 
             // chipsButton
             // 
+            this.chipsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chipsButton.Location = new System.Drawing.Point(205, 31);
             this.chipsButton.Name = "chipsButton";
             this.chipsButton.Size = new System.Drawing.Size(117, 60);
@@ -65,6 +68,7 @@
             // 
             // candyButton
             // 
+            this.candyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.candyButton.Location = new System.Drawing.Point(369, 31);
             this.candyButton.Name = "candyButton";
             this.candyButton.Size = new System.Drawing.Size(126, 60);
@@ -76,9 +80,10 @@
             // currentMoneyLabel
             // 
             this.currentMoneyLabel.AutoSize = true;
-            this.currentMoneyLabel.Location = new System.Drawing.Point(66, 279);
+            this.currentMoneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentMoneyLabel.Location = new System.Drawing.Point(90, 309);
             this.currentMoneyLabel.Name = "currentMoneyLabel";
-            this.currentMoneyLabel.Size = new System.Drawing.Size(34, 13);
+            this.currentMoneyLabel.Size = new System.Drawing.Size(55, 24);
             this.currentMoneyLabel.TabIndex = 4;
             this.currentMoneyLabel.Text = "$0.00";
             // 
@@ -124,7 +129,7 @@
             // 
             // fiftyCentButton
             // 
-            this.fiftyCentButton.Location = new System.Drawing.Point(489, 457);
+            this.fiftyCentButton.Location = new System.Drawing.Point(461, 457);
             this.fiftyCentButton.Name = "fiftyCentButton";
             this.fiftyCentButton.Size = new System.Drawing.Size(75, 23);
             this.fiftyCentButton.TabIndex = 9;
@@ -134,7 +139,7 @@
             // 
             // oneDollarButton
             // 
-            this.oneDollarButton.Location = new System.Drawing.Point(603, 457);
+            this.oneDollarButton.Location = new System.Drawing.Point(576, 457);
             this.oneDollarButton.Name = "oneDollarButton";
             this.oneDollarButton.Size = new System.Drawing.Size(75, 23);
             this.oneDollarButton.TabIndex = 10;
@@ -145,27 +150,40 @@
             // infoLabel
             // 
             this.infoLabel.AutoSize = true;
-            this.infoLabel.Location = new System.Drawing.Point(47, 130);
+            this.infoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoLabel.Location = new System.Drawing.Point(110, 149);
             this.infoLabel.Name = "infoLabel";
-            this.infoLabel.Size = new System.Drawing.Size(57, 13);
+            this.infoLabel.Size = new System.Drawing.Size(212, 46);
             this.infoLabel.TabIndex = 11;
             this.infoLabel.Text = "Insert Coin";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(354, 201);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(576, 31);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 50);
+            this.button1.Size = new System.Drawing.Size(118, 67);
             this.button1.TabIndex = 12;
             this.button1.Text = "Return Change";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 309);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Current";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 517);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.oneDollarButton);
@@ -199,6 +217,7 @@
         private System.Windows.Forms.Button oneDollarButton;
         private System.Windows.Forms.Label infoLabel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

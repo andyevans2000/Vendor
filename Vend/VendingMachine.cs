@@ -49,7 +49,7 @@ namespace Vend
         /// <returns></returns>
         public SelectProductResult SelectProduct(ProductType productType)
         {
-            _log.InfoFormat("product {0} selected",productType);
+            _log.InfoFormat($"product {productType} selected");
             //do nowt if the machine is in the fault state
             if (CurrentState == State.Fault)
                 return new SelectProductResult { State = ProductSelectedPossibleStates.Fault };
@@ -64,7 +64,7 @@ namespace Vend
                 CurrentMoneyAvailable = CurrentMoneyAvailable - _currentProduct.Cost;
                
                 var change=ReturnChangeInternal();
-                _log.InfoFormat("product {0} purchase made", _currentProduct);
+                _log.InfoFormat($"product {_currentProduct} purchase made");
                 return new SelectProductResult { State = ProductSelectedPossibleStates.PurchaseMade, Change = change };
             }
 
@@ -97,7 +97,7 @@ namespace Vend
         {
             _currentProduct = null;
             var moneyToReturn = CurrentMoneyAvailable;
-            _log.InfoFormat("{0} Change given",moneyToReturn);
+            _log.InfoFormat($"{moneyToReturn} Change given");
             CurrentMoneyAvailable = 0;
             return moneyToReturn;
         }
@@ -124,11 +124,10 @@ namespace Vend
                 return new InsertCoinResult { State = CoinInsertedPossibleStates.Fault };
 
             //we could get odd values, its not a valid coin anyway
-            if(size<=0 || weight <= 0)
+            if( size<=0 || weight <= 0)
             {
-                _log.WarnFormat("Strange object inserted with weight {0} and size {1}", weight, size);
+                _log.WarnFormat($"Strange object inserted with weight {weight} and size {size}");
                 return new InsertCoinResult { State = CoinInsertedPossibleStates.NotAValidCoin };
-
             }
 
             //use our injected coin service to work out what coin it is (if any)
@@ -137,11 +136,11 @@ namespace Vend
             //its not a valid coin, so return the correct result
             if (coin == null)
             {
-                _log.WarnFormat("Unknow coin inserted with weight {0} and size {1}", weight, size);
+                _log.WarnFormat($"Unknow coin inserted with weight {weight} and size {size}");
                 return new InsertCoinResult { State = CoinInsertedPossibleStates.NotAValidCoin };
             }
 
-            _log.InfoFormat("{0} Coin inserted", coin);
+            _log.InfoFormat($"{coin} Coin inserted");
             //increment the available money amount
             CurrentMoneyAvailable = CurrentMoneyAvailable + coin.Value;
 
@@ -153,7 +152,7 @@ namespace Vend
             if(CurrentMoneyAvailable>= _currentProduct.Cost)
             {
                 CurrentMoneyAvailable = CurrentMoneyAvailable - _currentProduct.Cost;
-                _log.InfoFormat("product {0} purchase made", _currentProduct);
+                _log.InfoFormat($"product {_currentProduct} purchase made");
                 var change=ReturnChangeInternal();
                 return new InsertCoinResult { State = CoinInsertedPossibleStates.PurchaseMade, Change = change };
             }
@@ -162,42 +161,4 @@ namespace Vend
             return new InsertCoinResult { State = CoinInsertedPossibleStates.NeedMoreMoney };
         }
     }
-
-    /// <summary>
-    /// possible results when a coin is inserted into the vending machine
-    /// </summary>
-    public enum CoinInsertedPossibleStates
-    {
-        NotAValidCoin,CoinAccepted,PurchaseMade,NoProductSelected,Fault,NeedMoreMoney
-    }
-
-    /// <summary>
-    /// possible results when a product is selected
-    /// </summary>
-    public enum ProductSelectedPossibleStates
-    {
-        Fault,PurchaseMade, NeedMoreMoney
-    }
-
-    /// <summary>
-    /// possible states of the vending machine
-    /// </summary>
-    public enum State
-    {
-        Ready,Fault
-    }
-
-    public class SelectProductResult
-    {
-        public ProductSelectedPossibleStates State { get; set; }
-        public decimal Change { get; set; }
-    }
-
-    public class InsertCoinResult
-    {
-        public CoinInsertedPossibleStates State { get; set; }
-        public decimal Change { get; set; }
-    }
-
-
 }

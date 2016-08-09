@@ -93,6 +93,7 @@ namespace Vend.Tests
             var res=vendingMachine.InsertCoinObject(1, 2);
             Assert.AreEqual(1, vendingMachine.CurrentMoneyAvailable);
             Assert.AreEqual(CoinInsertedPossibleStates.NeedMoreMoney, res.State);
+            Assert.IsFalse(res.Change.HasValue);
 
             //add more money, should now be purchased
             res = vendingMachine.InsertCoinObject(1, 2);
@@ -115,6 +116,7 @@ namespace Vend.Tests
             //check the states
             Assert.AreEqual(1, vendingMachine.CurrentMoneyAvailable);
             Assert.AreEqual(CoinInsertedPossibleStates.NoProductSelected, res.State);
+            Assert.IsFalse(res.Change.HasValue);
             res = vendingMachine.InsertCoinObject(1, 2);
             Assert.AreEqual(2, vendingMachine.CurrentMoneyAvailable);
             Assert.AreEqual(CoinInsertedPossibleStates.NoProductSelected, res.State);

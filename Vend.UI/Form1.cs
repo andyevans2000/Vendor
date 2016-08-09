@@ -11,11 +11,14 @@ namespace Vend.UI
     public partial class Form1 : Form
     {
         private readonly IVendingMachine _vendingMachine;
+
+        //inject out VendingMachine instance
         public Form1(IVendingMachine vendingMachine)
         {
             _vendingMachine = vendingMachine;
             InitializeComponent();
             SetProductButtons(null);
+            BackColor = Color.LightSlateGray;
         }
 
         //CHOOSE COLA
@@ -38,7 +41,7 @@ namespace Vend.UI
         private void HandleMoneyInserted(InsertCoinResult result)
         {
             if (result.State == CoinInsertedPossibleStates.PurchaseMade)
-                PurchaseMade();
+                PurchaseMade(result.Change);
             else if (result.State == CoinInsertedPossibleStates.NeedMoreMoney)
             {
                 infoLabel.Text = $"PRICE - ${_vendingMachine.CurrentProduct.Cost}";
@@ -49,7 +52,7 @@ namespace Vend.UI
         private void HandleProductSelected(SelectProductResult result)
         {
             if (result.State == ProductSelectedPossibleStates.PurchaseMade)
-                PurchaseMade();
+                PurchaseMade(result.Change);
             else if (result.State == ProductSelectedPossibleStates.NeedMoreMoney)
             {
                 infoLabel.Text = $"PRICE - ${_vendingMachine.CurrentProduct.Cost}";
@@ -57,19 +60,23 @@ namespace Vend.UI
             }
         }
 
-        private void PurchaseMade()
+        private void PurchaseMade(decimal? change)
         {
-            infoLabel.Text = "THANK YOU - change given";
+            //show user we have made the purchase for 3 seconds
+            infoLabel.Text = $"THANK YOU - ${change.Value} change given";
             infoLabel.Update();
             infoLabel.Refresh();
-            
+            BackColor = Color.Green;
+            Update();
+            Refresh();
             //normally we don't do this but freeze the app for 5 seconds to simulate dispensing the product and then reset
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             _vendingMachine.ReturnChange();
             _vendingMachine.SetReadyToVend();
             UpdateMoney();
             infoLabel.Text = "Insert Coin";
             SetProductButtons(null);
+            BackColor = Color.LightSlateGray;
         }
         private void fiveCentButton_Click(object sender, EventArgs e)
         {
