@@ -8,5 +8,7 @@ The solution is divided into 4 projects.
 
 General principles
 
-1 - Dependency Injection is used throughout, with use of interfaces. Autofac is used as a DI container for the Forms app.
-2- Log4Net is used for logging of all events, loggers can be attached through standard log4net config (none are set up yet)
+1 - Dependency Injection is used throughout, with use of interfaces. Autofac is used as a DI container for the Forms app. Designed to be loosely coupled and testable.
+2 - Log4Net is used for logging of all events, loggers can be attached through standard log4net config (none are set up yet)
+3 - Designed so that different products could be substituted without changing the main VendingMachine class - we could sell a differnt set of products using the same machine.
+4- Designed so that a different set of coinage (e.g. Euros) could be used with the same machine - without changing the main VendingMachine class
