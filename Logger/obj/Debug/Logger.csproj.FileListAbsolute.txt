@@ -1,0 +1,9 @@
+C:\code\Tester\Vend\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
+C:\code\Tester\Vend\Logger\bin\Debug\Logger.dll
+C:\code\Tester\Vend\Logger\bin\Debug\Logger.pdb
+C:\code\Tester\Vend\Logger\bin\Debug\Autofac.dll
+C:\code\Tester\Vend\Logger\bin\Debug\log4net.dll
+C:\code\Tester\Vend\Logger\bin\Debug\Autofac.xml
+C:\code\Tester\Vend\Logger\bin\Debug\log4net.xml
+C:\code\Tester\Vend\Logger\obj\Debug\Logger.dll
+C:\code\Tester\Vend\Logger\obj\Debug\Logger.pdb

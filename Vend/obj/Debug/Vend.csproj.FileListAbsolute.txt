@@ -1,0 +1,10 @@
+C:\code\Tester\Vend\Vend\bin\Debug\Vend.pdb
+C:\code\Tester\Vend\Vend\obj\Debug\Vend.csprojResolveAssemblyReference.cache
+C:\code\Tester\Vend\Vend\obj\Debug\Vend.pdb
+C:\code\Tester\Vend\Vend\bin\Debug\Autofac.dll
+C:\code\Tester\Vend\Vend\bin\Debug\Autofac.xml
+C:\code\Tester\Vend\Vend\bin\Debug\Vend.dll.config
+C:\code\Tester\Vend\Vend\bin\Debug\Vend.dll
+C:\code\Tester\Vend\Vend\obj\Debug\Vend.dll
+C:\code\Tester\Vend\Vend\bin\Debug\log4net.dll
+C:\code\Tester\Vend\Vend\bin\Debug\log4net.xml
