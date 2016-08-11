@@ -10,7 +10,6 @@ namespace Vend
     {  
         private readonly ICoinService _coinService;
         private readonly IProductProvider _productProvider;
-        private Product _currentProduct;
         private readonly ILog _log;
 
         /// <summary>
@@ -35,7 +34,7 @@ namespace Vend
         /// <summary>
         /// the currently selected product
         /// </summary>
-        public Product CurrentProduct => _currentProduct;
+        public Product CurrentProduct { get; private set; }
 
         /// <summary>
         /// the money available  (to either make or purchase or get back as change) in the machine
@@ -55,17 +54,17 @@ namespace Vend
                 return new SelectProductResult { State = ProductSelectedPossibleStates.Fault };
 
             //choose the product based on what was selected
-            _currentProduct = _productProvider.GetProducts()
+            CurrentProduct = _productProvider.GetProducts()
                 .FirstOrDefault(p=>p.ProductType==productType);
-            if (_currentProduct == null)
+            if (CurrentProduct == null)
                 return new SelectProductResult {State = ProductSelectedPossibleStates.Fault};
             //if there is enough money in the machine we can dispense the product and return the change
-            if (CurrentMoneyAvailable >= _currentProduct.Cost)
+            if (CurrentMoneyAvailable >= CurrentProduct.Cost)
             {
-                CurrentMoneyAvailable = CurrentMoneyAvailable - _currentProduct.Cost;
+                CurrentMoneyAvailable = CurrentMoneyAvailable - CurrentProduct.Cost;
                
                 var change=ReturnChangeInternal();
-                _log.InfoFormat($"product {_currentProduct} purchase made");
+                _log.InfoFormat($"product {CurrentProduct} purchase made");
                 return new SelectProductResult { State = ProductSelectedPossibleStates.PurchaseMade, Change = change };
             }
 
@@ -80,7 +79,7 @@ namespace Vend
         {
             _log.InfoFormat("Ready to vend");
             CurrentState = State.Ready;
-            _currentProduct = null;
+            CurrentProduct = null;
         }
 
         /// <summary>
@@ -96,7 +95,7 @@ namespace Vend
 
         private decimal ReturnChangeInternal()
         {
-            _currentProduct = null;
+            CurrentProduct = null;
             var moneyToReturn = CurrentMoneyAvailable;
             _log.InfoFormat($"{moneyToReturn} Change given");
             CurrentMoneyAvailable = 0;
@@ -146,14 +145,14 @@ namespace Vend
             CurrentMoneyAvailable = CurrentMoneyAvailable + coin.Value;
 
             //there is no product selected, that is fine because the customer may not have chosen a product yet
-            if (_currentProduct==null)
+            if (CurrentProduct==null)
                 return new InsertCoinResult { State = CoinInsertedPossibleStates.NoProductSelected };
 
             //if we have enough money for the selected product, set the remaining money (change), return the change and dispense the product
-            if(CurrentMoneyAvailable>= _currentProduct.Cost)
+            if(CurrentMoneyAvailable>= CurrentProduct.Cost)
             {
-                CurrentMoneyAvailable = CurrentMoneyAvailable - _currentProduct.Cost;
-                _log.InfoFormat($"product {_currentProduct} purchase made");
+                CurrentMoneyAvailable = CurrentMoneyAvailable - CurrentProduct.Cost;
+                _log.InfoFormat($"product {CurrentProduct} purchase made");
                 var change=ReturnChangeInternal();
                 return new InsertCoinResult { State = CoinInsertedPossibleStates.PurchaseMade, Change = change };
             }

@@ -7,6 +7,10 @@ namespace Vend
     /// </summary>
     public class HardcodedProductProvider : IProductProvider
     {
+        /// <summary>
+        /// Get the list of possible products
+        /// </summary>
+        /// <returns>the list of products</returns>
         public List<Product> GetProducts()
         {
             return new List<Product>

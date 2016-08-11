@@ -7,6 +7,10 @@ namespace Vend
     /// </summary>
     public interface IProductProvider
     {
+        /// <summary>
+        /// get possible products
+        /// </summary>
+        /// <returns></returns>
         List<Product> GetProducts();
     }
 }

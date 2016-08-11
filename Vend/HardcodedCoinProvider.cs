@@ -10,7 +10,7 @@ namespace Vend
         /// <summary>
         /// get a list of all possible coins in the system
         /// </summary>
-        /// <returns></returns>
+        /// <returns>the list of coins</returns>
         public List<Coin> GetPossibleCoins()
         {
             return new List<Coin>

@@ -9,6 +9,10 @@ namespace Vend
     {
         private readonly ICoinProvider _coinProvider;
 
+        /// <summary>
+        /// create a new instance of the coin service
+        /// </summary>
+        /// <param name="coinProvider">we need an instance of ICoinProvider so we can get the coin data we need</param>
         public CoinService(ICoinProvider coinProvider)
         {
             _coinProvider = coinProvider;
@@ -17,8 +21,8 @@ namespace Vend
         /// <summary>
         /// get a specific coin using its size and weight
         /// </summary>
-        /// <param name="size"></param>
-        /// <param name="weight"></param>
+        /// <param name="size">The size of the inserted coin</param>
+        /// <param name="weight">The weight of the inserted coin</param>
         /// <returns></returns>
         public Coin GetCoin(double size, double weight)
         {

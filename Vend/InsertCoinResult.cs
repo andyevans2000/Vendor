@@ -9,6 +9,5 @@
         /// the resulting state of the operation
         /// </summary>
         public CoinInsertedPossibleStates State { get; set; }
-        
     }
 }

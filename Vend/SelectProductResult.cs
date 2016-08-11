@@ -5,6 +5,9 @@
     /// </summary>
     public class SelectProductResult:CustomerActionResult
     {
+        /// <summary>
+        /// the state e.g. 'Purchased'
+        /// </summary>
         public ProductSelectedPossibleStates State { get; set; }
     }
 }

@@ -30,4 +30,12 @@
         Ready,
         Fault
     }
+
+    /// <summary>
+    /// possible product types
+    /// </summary>
+    public enum ProductType
+    {
+        Cola, Chips, Candy
+    }
 }
