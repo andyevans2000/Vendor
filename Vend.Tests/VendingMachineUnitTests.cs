@@ -11,6 +11,10 @@ namespace Vend.Tests
     [TestFixture]
     public class VendingMachineUnitTests
     {
+        /// <summary>
+        /// test that when set the machine to the Fault state the correct things happen, 
+        /// like you can't get products out
+        /// </summary>
         [Test]
         public void TestSetFault()
         {
@@ -46,9 +50,9 @@ namespace Vend.Tests
             Assert.AreEqual(State.Ready, vendingMachine.CurrentState);
         }
         
-        private IProductProvider GetTestProductProvider()
+        private static IProductProvider GetTestProductProvider()
         {
-            //use nsubstite 
+            //use NSubstitute to mock our injected types 
             var productProvider = Substitute.For<IProductProvider>();
             productProvider.GetProducts()
                 .Returns(new List<Product> {
@@ -66,10 +70,14 @@ namespace Vend.Tests
             return productProvider;
         }
 
-        private ICoinService GetTestCoinService()
+        /// <summary>
+        /// helper method to get a mocked coin service instance
+        /// </summary>
+        /// <returns></returns>
+        private static ICoinService GetTestCoinService()
         {
             var coinService = Substitute.For<ICoinService>();
-            coinService.GetCoin(1, 2)
+            coinService.GetCoin(1, 2) //mock the returned value
                 .Returns(new Coin { Value = 1 });
 
             return coinService;
@@ -135,7 +143,9 @@ namespace Vend.Tests
             Assert.IsNull(vendingMachine.CurrentProduct);
         }
 
-        //tests scenario where customer hits the get change button
+        /// <summary>
+        /// tests scenario where customer hits the get change button
+        /// </summary>
         [Test]
         public void TestGetChange()
         {
@@ -168,7 +178,9 @@ namespace Vend.Tests
             Assert.AreEqual(0, vendingMachine.CurrentMoneyAvailable);
         }
 
-        //tests the scenario where coins weired values (e.g. negative) are used
+        /// <summary>
+        /// tests the scenario where coins weired values (e.g. negative) are used
+        /// </summary>
         [Test]
         public void TestAddInvalidCoinBadValues()
         {
@@ -178,6 +190,9 @@ namespace Vend.Tests
             Assert.AreEqual(0, vendingMachine.CurrentMoneyAvailable);
         }
 
+        /// <summary>
+        /// tests the scenario for change being correctly returned after a purchase
+        /// </summary>
         [Test]
         public void TestChangeIsGivenAfterPurchase()
         {

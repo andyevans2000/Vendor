@@ -4,7 +4,7 @@ using System.Linq;
 namespace Vend
 {
     /// <summary>
-    /// represents the vending machine
+    /// represents the vending machine - this is designed to be created as a single, shared instance so it will alwyas be in the correct state
     /// </summary>
     public class VendingMachine : IVendingMachine
     {  
@@ -88,14 +88,14 @@ namespace Vend
         /// <returns></returns>
         public decimal ReturnChange()
         {
-            if (CurrentState == State.Fault)
-                return 0;
-            return ReturnChangeInternal();
+            return CurrentState == State.Fault ? 0 : ReturnChangeInternal();
         }
 
         private decimal ReturnChangeInternal()
         {
+            //current product is not set
             CurrentProduct = null;
+            //save the money to return temporarily, as  we need to set the main property to 0
             var moneyToReturn = CurrentMoneyAvailable;
             _log.InfoFormat($"{moneyToReturn} Change given");
             CurrentMoneyAvailable = 0;
