@@ -12,3 +12,8 @@
 2.  Log4Net is used for logging of all events, loggers can be attached through standard log4net config (none are set up yet)
 3.  Designed so that different products could be substituted without changing the main VendingMachine class - we could sell a differnt set of products using the same machine.
 4. Designed so that a different set of coinage (e.g. Euros) could be used with the same machine - without changing the main VendingMachine class
+
+### Limitations
+
+1. The vending machine does not take into account products that run out of stock
+2. The machine is designed to interact with the mechanical / electronic components
